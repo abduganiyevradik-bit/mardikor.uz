@@ -47,7 +47,6 @@
             100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
         }
 
-        /* Honeypot field */
         .hp-field { display: none !important; visibility: hidden !important; }
     </style>
 </head>
@@ -93,8 +92,8 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="service-card glass p-8 rounded-[32px] reveal">
                 <div class="text-4xl mb-6">⚡</div>
-                <h3 class="text-xl font-bold mb-4">Услуги электрика</h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-6">Ремонт проводки, установка люстр, розеток. Решим любую проблему с электричеством.</p>
+                <h3 class="text-xl font-bold mb-4">Электрик</h3>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">Ремонт проводки, установка люстр, розеток.</p>
                 <ul class="text-[10px] font-bold uppercase tracking-widest text-orange-500 space-y-2">
                     <li>• От 50 000 сум</li>
                     <li>• Гарантия 1 год</li>
@@ -103,7 +102,7 @@
             <div class="service-card glass p-8 rounded-[32px] reveal" style="transition-delay: 0.1s;">
                 <div class="text-4xl mb-6">🚰</div>
                 <h3 class="text-xl font-bold mb-4">Сантехник</h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-6">Устранение засоров, ремонт смесителей и установка сантехники любой сложности.</p>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">Устранение засоров, ремонт смесителей.</p>
                 <ul class="text-[10px] font-bold uppercase tracking-widest text-orange-500 space-y-2">
                     <li>• От 60 000 сум</li>
                     <li>• Срочный выезд</li>
@@ -112,7 +111,7 @@
             <div class="service-card glass p-8 rounded-[32px] reveal" style="transition-delay: 0.2s;">
                 <div class="text-4xl mb-6">🛠</div>
                 <h3 class="text-xl font-bold mb-4">Муж на час</h3>
-                <p class="text-gray-500 text-sm leading-relaxed mb-6">Мелкий ремонт: полки, карнизы, сборка мебели и помощь по хозяйству.</p>
+                <p class="text-gray-500 text-sm leading-relaxed mb-6">Мелкий ремонт, сборка мебели.</p>
                 <ul class="text-[10px] font-bold uppercase tracking-widest text-orange-500 space-y-2">
                     <li>• От 40 000 сум</li>
                     <li>• Инструменты с собой</li>
@@ -125,40 +124,27 @@
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="reveal">
-                    <h2 class="text-4xl md:text-6xl font-black outfit mb-8 uppercase leading-none">ПОЧЕМУ <br><span class="text-orange-500">ВЫБИРАЮТ НАС</span></h2>
+                    <h2 class="text-4xl md:text-6xl font-black outfit mb-8 uppercase leading-none">ПОЧЕМУ <br><span class="text-orange-500">МЫ?</span></h2>
                     <div class="space-y-8">
                         <div class="flex gap-6">
                             <div class="w-12 h-12 rounded-2xl bg-orange-600 flex-shrink-0 flex items-center justify-center font-bold">01</div>
                             <div>
                                 <h4 class="font-bold mb-2">Оперативность</h4>
-                                <p class="text-gray-400 text-sm">Мы используем GPS-мониторинг, чтобы направить к вам мастера, который находится в вашем районе.</p>
+                                <p class="text-gray-400 text-sm">Выезд мастера в течение 60 минут после заявки.</p>
                             </div>
                         </div>
                         <div class="flex gap-6">
                             <div class="w-12 h-12 rounded-2xl bg-orange-600 flex-shrink-0 flex items-center justify-center font-bold">02</div>
                             <div>
                                 <h4 class="font-bold mb-2">Профессионализм</h4>
-                                <p class="text-gray-400 text-sm">Все мастера проходят строгий отбор и имеют при себе полный комплект оборудования.</p>
-                            </div>
-                        </div>
-                        <div class="flex gap-6">
-                            <div class="w-12 h-12 rounded-2xl bg-orange-600 flex-shrink-0 flex items-center justify-center font-bold">03</div>
-                            <div>
-                                <h4 class="font-bold mb-2">Прозрачность</h4>
-                                <p class="text-gray-400 text-sm">Честные цены без скрытых доплат. Вы платите только за выполненную работу.</p>
+                                <p class="text-gray-400 text-sm">Все мастера имеют опыт работы более 5 лет.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
-                <div id="map-container" class="glass h-[500px] rounded-[64px] relative overflow-hidden reveal border-2 border-orange-600/20">
+                <div id="map-container" class="glass h-[400px] rounded-[64px] relative overflow-hidden reveal border-2 border-orange-600/20">
                     <div id="map"></div>
-                    <div class="absolute bottom-8 left-8 right-8 z-[500] pointer-events-none">
-                        <div class="glass p-6 rounded-3xl border-orange-600/30">
-                            <p class="text-4xl font-black outfit mb-1">98%</p>
-                            <p class="text-[10px] font-bold uppercase tracking-widest text-orange-500">Довольных клиентов в регионе</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -176,97 +162,34 @@
                     <input type="text" id="client_name" name="name" placeholder="Ваше имя" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-orange-600 transition-colors">
                     <input type="tel" id="client_phone" name="phone" placeholder="+998" required autocomplete="tel" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-orange-600 font-bold transition-colors">
                 </div>
-                <input type="text" id="client_address" name="address" placeholder="Адрес (мы определим точнее после нажатия)" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-orange-600 transition-colors">
-                <textarea id="client_problem" name="problem" placeholder="Краткое описание задачи..." class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none h-32 focus:border-orange-600 resize-none transition-colors"></textarea>
+                <input type="text" id="client_address" name="address" placeholder="Адрес" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-orange-600 transition-colors">
+                <textarea id="client_problem" name="problem" placeholder="Что нужно сделать?" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none h-32 focus:border-orange-600 resize-none transition-colors"></textarea>
                 
                 <button type="submit" id="submitBtn" class="w-full bg-orange-600 py-6 rounded-2xl font-black uppercase text-sm text-white shadow-xl shadow-orange-600/30 hover:scale-[1.01] transition-transform">
                     ПОДТВЕРДИТЬ ВЫЗОВ
                 </button>
             </form>
-
-            <div id="status-container" class="mt-8 text-center hidden">
-                <div id="status-box" class="px-6 py-4 rounded-2xl border">
-                    <p id="status-text" class="font-bold uppercase text-sm tracking-widest"></p>
-                </div>
-            </div>
         </div>
     </section>
 
     <footer class="py-20 border-t border-white/5 text-center">
         <div class="max-w-6xl mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
-                <div class="text-left">
-                    <h4 class="outfit font-black text-2xl tracking-tighter uppercase">MARDIKOR PRO</h4>
-                    <p class="text-gray-500 text-xs mt-2 uppercase tracking-widest">Ваш комфорт — наша забота</p>
-                </div>
-                <div class="flex gap-6 text-xl font-bold">
-                    <a href="tel:+998953379990" class="hover:text-orange-500 transition-colors">+998 95 337 99 90</a>
-                </div>
-            </div>
-            <p class="text-[10px] uppercase tracking-[0.5em] text-gray-700 font-bold">© 2026 Mardikor Digital | Сервис в Узбекистане</p>
+            <p class="text-[10px] uppercase tracking-[0.5em] text-gray-700 font-bold">© 2026 Mardikor Pro | Сервис в Узбекистане</p>
         </div>
     </footer>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        const CONFIG = {
-            // В идеале эти данные должны быть на бэкенде
-            tgToken: '8278814308:AAFv5klZh68blxKQOUGe7mNSBHkhg5W0EHo',
-            tgChatId: '7813302049',
-            webhookUrl: 'https://hook.us2.make.com/tjczx3kjuafeo0gfrhtbizzv61uhzgd'
-        };
-
+        // Инициализация карты
         let mapInitialized = false;
-
         function initMap() {
             if (mapInitialized) return;
-            try {
-                const samarkandCoord = [39.6542, 66.9597];
-                const map = L.map('map', {
-                    center: samarkandCoord,
-                    zoom: 12,
-                    zoomControl: false,
-                    dragging: true,
-                    scrollWheelZoom: false
-                });
-
-                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-                const points = [
-                    [39.6600, 66.9400], [39.6450, 66.9750], [39.6700, 66.9200],
-                    [39.6250, 66.9550], [39.6580, 66.9900], [39.6400, 66.9100],
-                    [39.6800, 66.9600], [39.6100, 66.9300], [39.6542, 66.9597]
-                ];
-
-                points.forEach(coord => {
-                    const pulseIcon = L.divIcon({
-                        className: 'pulse-icon',
-                        iconSize: [12, 12],
-                        iconAnchor: [6, 6]
-                    });
-                    L.marker(coord, { icon: pulseIcon }).addTo(map);
-                });
-                mapInitialized = true;
-            } catch (err) { console.error("Map error", err); }
-        }
-
-        async function getGPSLocation() {
-            return new Promise((resolve) => {
-                if (!navigator.geolocation) return resolve(null);
-                navigator.geolocation.getCurrentPosition(
-                    pos => resolve({ lat: pos.coords.latitude, lon: pos.coords.longitude, acc: pos.coords.accuracy }),
-                    () => resolve(null),
-                    { enableHighAccuracy: true, timeout: 5000 }
-                );
-            });
-        }
-
-        async function getIPLocation() {
-            try {
-                const response = await fetch('https://ipapi.co/json/');
-                return await response.json();
-            } catch (e) { return null; }
+            const samarkandCoord = [39.6542, 66.9597];
+            const map = L.map('map', { center: samarkandCoord, zoom: 12, zoomControl: false, scrollWheelZoom: false });
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+            L.marker(samarkandCoord).addTo(map);
+            mapInitialized = true;
         }
 
         function scrollToBooking() {
@@ -274,106 +197,67 @@
             setTimeout(() => document.getElementById('client_name').focus(), 800);
         }
 
-        // Обработка формы
-        document.getElementById('proForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
+        // Ждем загрузки DOM перед привязкой событий
+        document.addEventListener("DOMContentLoaded", () => {
             
-            // Honeypot check
-            if (this.website.value) return;
+            // Логика отправки формы
+            document.getElementById('proForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
 
-            const btn = document.getElementById('submitBtn');
-            const progress = document.getElementById('main-progress');
-            const statusContainer = document.getElementById('status-container');
-            const statusBox = document.getElementById('status-box');
-            const statusText = document.getElementById('status-text');
+                const btn = document.getElementById('submitBtn');
+                btn.innerText = "ОТПРАВКА...";
+                btn.disabled = true;
 
-            btn.disabled = true;
-            btn.innerText = 'ОТПРАВКА...';
-            progress.style.width = '20%';
+                const clientData = {
+                    name: document.getElementById('client_name').value,
+                    phone: document.getElementById('client_phone').value,
+                    address: document.getElementById('client_address').value,
+                    problem: document.getElementById('client_problem').value || 'Не описано',
+                    timestamp: new Date().toISOString()
+                };
 
-            const clientData = {
-                name: document.getElementById('client_name').value,
-                phone: document.getElementById('client_phone').value,
-                address: document.getElementById('client_address').value,
-                problem: document.getElementById('client_problem').value || 'Не описано',
-                timestamp: new Date().toISOString()
-            };
+                try {
+                    await fetch("https://hook.us2.make.com/tjczx3kjuafeo0gfrhtbizzv61uhzgd", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(clientData)
+                    });
 
-            const [gps, ip] = await Promise.all([getGPSLocation(), getIPLocation()]);
-            progress.style.width = '60%';
+                    btn.innerText = "ГОТОВО ✅";
+                    this.reset();
 
-            let locationString = gps 
-                ? `📍 *GPS:* [Карта](https://www.google.com/maps?q=${gps.lat},${gps.lon}) (±${Math.round(gps.acc)}m)\n` 
-                : `📍 *GPS:* Отключен\n`;
-            
-            if (ip) locationString += `🌐 *IP:* ${ip.city || 'Узбекистан'}, ${ip.org || '-'}`;
-
-            const tgText = `🚨 *НОВЫЙ ЗАКАЗ*\n\n👤 *Имя:* ${clientData.name}\n📞 *Тел:* ${clientData.phone}\n🏠 *Адрес:* ${clientData.address}\n💬 *Суть:* ${clientData.problem}\n\n${locationString}`;
-
-            progress.style.width = '80%';
-
-            // Отправка с использованием allSettled для стабильности
-            const results = await Promise.allSettled([
-                fetch(`https://api.telegram.org/bot${CONFIG.tgToken}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: CONFIG.tgChatId, text: tgText, parse_mode: 'Markdown' })
-                }),
-                fetch(CONFIG.webhookUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ ...clientData, gps, ip })
-                })
-            ]);
-
-            progress.style.width = '100%';
-            
-            // Проверка: хотя бы один сервис должен ответить успешно
-            const isSuccess = results.some(res => res.status === 'fulfilled' && res.value.ok);
-
-            statusContainer.classList.remove('hidden');
-            if (isSuccess) {
-                statusBox.className = "bg-green-500/20 text-green-400 px-6 py-4 rounded-2xl border border-green-500/30";
-                statusText.innerText = "✅ Заявка принята! Мастер свяжется с вами.";
-                btn.innerText = 'ГОТОВО';
-                this.reset();
-            } else {
-                statusBox.className = "bg-red-500/20 text-red-400 px-6 py-4 rounded-2xl border border-red-500/30";
-                statusText.innerText = "❌ Ошибка отправки. Позвоните нам напрямую.";
-                btn.innerText = 'ОШИБКА';
-                btn.disabled = false;
-            }
-        });
-
-        // Маска телефона
-        document.getElementById('client_phone').addEventListener('input', (e) => {
-            let v = e.target.value.replace(/\D/g, '');
-            if (!v.startsWith('998')) v = '998' + v;
-            let res = '+998 ';
-            if (v.length > 3) res += '(' + v.substring(3, 5);
-            if (v.length > 5) res += ') ' + v.substring(5, 8);
-            if (v.length > 8) res += '-' + v.substring(8, 10);
-            if (v.length > 10) res += '-' + v.substring(10, 12);
-            e.target.value = res.substring(0, 19);
-        });
-
-        // Наблюдатели (Reveal + Lazy Map)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { 
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    if (entry.target.id === 'map-container') initMap();
-                } 
+                } catch(err) {
+                    console.error(err);
+                    btn.innerText = "ОШИБКА ❌";
+                    btn.disabled = false;
+                }
             });
-        }, { threshold: 0.1 });
 
-        window.onload = () => {
-            getIPLocation().then(ip => {
-                if (ip && ip.city) document.getElementById('header-city').innerText = ip.city;
+            // Маска номера телефона
+            document.getElementById('client_phone').addEventListener('input', (e) => {
+                let v = e.target.value.replace(/\D/g, '');
+                if (!v.startsWith('998')) v = '998' + v;
+                let res = '+998 ';
+                if (v.length > 3) res += '(' + v.substring(3, 5);
+                if (v.length > 5) res += ') ' + v.substring(5, 8);
+                if (v.length > 8) res += '-' + v.substring(8, 10);
+                if (v.length > 10) res += '-' + v.substring(10, 12);
+                e.target.value = res.substring(0, 19);
             });
+
+            // Анимация появления элементов и отложенная загрузка карты
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { 
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        if (entry.target.id === 'map-container') initMap();
+                    } 
+                });
+            }, { threshold: 0.1 });
+
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
             observer.observe(document.getElementById('map-container'));
-        };
+        });
     </script>
 </body>
 </html>
