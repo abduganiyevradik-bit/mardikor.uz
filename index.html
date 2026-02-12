@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <title>Mardikor Pro — Мастер в вашем городе за 60 минут</title>
+    <title>Mardikor Pro — Профессиональный сервис в Узбекистане</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@400;900&display=swap" rel="stylesheet">
     
-    <!-- Leaflet CSS для карты -->
+    <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 
     <style>
@@ -32,11 +32,9 @@
         .service-card { transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
         .service-card:hover { transform: translateY(-10px); background: rgba(255, 107, 0, 0.05); border-color: rgba(255, 107, 0, 0.3); }
 
-        /* Карта */
-        #map { width: 100%; height: 100%; border-radius: 64px; filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%); }
+        #map { width: 100%; height: 100%; border-radius: 64px; filter: invert(100%) hue-rotate(180deg) brightness(95%) contrast(90%); background: #111; }
         .leaflet-control-attribution { display: none !important; }
 
-        /* Пульсирующая точка на карте */
         .pulse-icon {
             background: #ff6b00;
             border-radius: 50%;
@@ -48,31 +46,32 @@
             70% { box-shadow: 0 0 0 10px rgba(255, 107, 0, 0); }
             100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
         }
+
+        /* Honeypot field */
+        .hp-field { display: none !important; visibility: hidden !important; }
     </style>
 </head>
 <body>
 
     <div id="progress-bar-container" class="fixed top-0 left-0 w-full h-1 z-[2000]"><div id="main-progress" class="h-full bg-orange-600 w-0 transition-all duration-300"></div></div>
 
-    <!-- Навигация -->
     <nav class="fixed top-0 left-0 w-full z-[100] px-4 pt-4">
         <div class="max-w-6xl mx-auto glass flex justify-between items-center p-4 rounded-3xl">
             <a href="#" class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-orange-600 rounded-2xl flex items-center justify-center font-black">M</div>
+                <div class="w-10 h-10 bg-orange-600 rounded-2xl flex items-center justify-center font-black shadow-lg shadow-orange-600/20">M</div>
                 <div class="outfit font-black text-lg tracking-tighter uppercase hidden xs:block">MARDIKOR PRO</div>
             </a>
             <div class="hidden md:flex gap-6">
-                <a href="#services" class="text-[10px] font-bold uppercase tracking-widest hover:text-orange-500">Услуги</a>
-                <a href="#advantages" class="text-[10px] font-bold uppercase tracking-widest hover:text-orange-500">Преимущества</a>
-                <a href="#booking" class="text-[10px] font-bold uppercase tracking-widest hover:text-orange-500">Заказать</a>
+                <a href="#services" class="text-[10px] font-bold uppercase tracking-widest hover:text-orange-500 transition-colors">Услуги</a>
+                <a href="#advantages" class="text-[10px] font-bold uppercase tracking-widest hover:text-orange-500 transition-colors">Преимущества</a>
+                <a href="#booking" class="text-[10px] font-bold uppercase tracking-widest hover:text-orange-500 transition-colors">Заказать</a>
             </div>
             <a href="tel:+998953379990" class="bg-orange-600 px-6 py-3 rounded-2xl text-[10px] font-black uppercase text-white animate-cta-pulse">Срочный вызов</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="relative pt-44 pb-20 px-6 min-h-[90vh] flex flex-col justify-center text-center">
-        <div class="max-w-5xl mx-auto">
+        <div class="max-w-5xl mx-auto relative z-10">
             <div class="inline-block px-4 py-2 rounded-full bg-orange-600/10 border border-orange-600/20 text-[10px] font-bold uppercase text-orange-500 mb-8 reveal">
                 Сервис №1 в <span id="header-city">Узбекистане</span>
             </div>
@@ -83,13 +82,12 @@
                 Профессиональный ремонт и бытовые услуги с гарантией. Мы определим ваше местоположение для мгновенного выезда.
             </p>
             <div class="flex flex-wrap justify-center gap-4 reveal">
-                <button onclick="scrollToBooking()" class="bg-orange-600 px-10 py-5 rounded-2xl font-black text-sm uppercase text-white">Заказать мастера</button>
-                <a href="tel:+998953379990" class="glass px-10 py-5 rounded-2xl font-black text-sm uppercase text-white">Позвонить нам</a>
+                <button onclick="scrollToBooking()" class="bg-orange-600 px-10 py-5 rounded-2xl font-black text-sm uppercase text-white hover:scale-105 transition-transform">Заказать мастера</button>
+                <a href="tel:+998953379990" class="glass px-10 py-5 rounded-2xl font-black text-sm uppercase text-white hover:bg-white/10 transition-colors">Позвонить нам</a>
             </div>
         </div>
     </section>
 
-    <!-- Услуги -->
     <section id="services" class="max-w-6xl mx-auto px-6 py-24">
         <h2 class="text-3xl md:text-5xl font-black outfit mb-16 uppercase text-center tracking-tighter">Наши <span class="text-orange-500">услуги</span></h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -123,7 +121,6 @@
         </div>
     </section>
 
-    <!-- Преимущества и КАРТА -->
     <section id="advantages" class="bg-white/5 py-24 px-6 overflow-hidden">
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -154,13 +151,12 @@
                     </div>
                 </div>
                 
-                <!-- Блок с Картой вместо фото -->
-                <div class="glass h-[500px] rounded-[64px] relative overflow-hidden reveal border-2 border-orange-600/20">
+                <div id="map-container" class="glass h-[500px] rounded-[64px] relative overflow-hidden reveal border-2 border-orange-600/20">
                     <div id="map"></div>
                     <div class="absolute bottom-8 left-8 right-8 z-[500] pointer-events-none">
                         <div class="glass p-6 rounded-3xl border-orange-600/30">
                             <p class="text-4xl font-black outfit mb-1">98%</p>
-                            <p class="text-[10px] font-bold uppercase tracking-widest text-orange-500">Довольных клиентов по Самарканду</p>
+                            <p class="text-[10px] font-bold uppercase tracking-widest text-orange-500">Довольных клиентов в регионе</p>
                         </div>
                     </div>
                 </div>
@@ -168,33 +164,34 @@
         </div>
     </section>
 
-    <!-- Форма заказа -->
     <section id="booking" class="max-w-4xl mx-auto px-6 py-24">
         <div class="glass p-8 md:p-16 rounded-[48px] reveal relative overflow-hidden">
             <h2 class="text-3xl md:text-4xl font-black outfit mb-8 uppercase text-center">ОФОРМИТЬ <span class="text-orange-500">ЗАКАЗ</span></h2>
             
             <form id="proForm" class="space-y-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <input type="text" id="client_name" placeholder="Ваше имя" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-orange-600">
-                    <input type="tel" id="client_phone" placeholder="+998" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-orange-600 font-bold">
-                </div>
-                <input type="text" id="client_address" placeholder="Адрес (мы определим точнее после нажатия)" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-orange-600">
-                <textarea id="client_problem" placeholder="Краткое описание задачи..." class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none h-32 focus:border-orange-600"></textarea>
+                <!-- Honeypot -->
+                <input type="text" name="website" class="hp-field" tabindex="-1" autocomplete="off">
                 
-                <button type="submit" id="submitBtn" class="w-full bg-orange-600 py-6 rounded-2xl font-black uppercase text-sm text-white shadow-xl shadow-orange-600/30">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="text" id="client_name" name="name" placeholder="Ваше имя" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-orange-600 transition-colors">
+                    <input type="tel" id="client_phone" name="phone" placeholder="+998" required autocomplete="tel" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-orange-600 font-bold transition-colors">
+                </div>
+                <input type="text" id="client_address" name="address" placeholder="Адрес (мы определим точнее после нажатия)" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none focus:border-orange-600 transition-colors">
+                <textarea id="client_problem" name="problem" placeholder="Краткое описание задачи..." class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl text-white outline-none h-32 focus:border-orange-600 resize-none transition-colors"></textarea>
+                
+                <button type="submit" id="submitBtn" class="w-full bg-orange-600 py-6 rounded-2xl font-black uppercase text-sm text-white shadow-xl shadow-orange-600/30 hover:scale-[1.01] transition-transform">
                     ПОДТВЕРДИТЬ ВЫЗОВ
                 </button>
             </form>
 
             <div id="status-container" class="mt-8 text-center hidden">
-                <div class="bg-green-500/20 text-green-400 px-6 py-4 rounded-2xl border border-green-500/30">
-                    <p class="font-bold uppercase text-sm tracking-widest">✅ Заявка отправлена! Мастер свяжется с вами.</p>
+                <div id="status-box" class="px-6 py-4 rounded-2xl border">
+                    <p id="status-text" class="font-bold uppercase text-sm tracking-widest"></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Футер -->
     <footer class="py-20 border-t border-white/5 text-center">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
@@ -203,65 +200,68 @@
                     <p class="text-gray-500 text-xs mt-2 uppercase tracking-widest">Ваш комфорт — наша забота</p>
                 </div>
                 <div class="flex gap-6 text-xl font-bold">
-                    <a href="tel:+998953379990">+998 95 337 99 90</a>
+                    <a href="tel:+998953379990" class="hover:text-orange-500 transition-colors">+998 95 337 99 90</a>
                 </div>
             </div>
-            <p class="text-[10px] uppercase tracking-[0.5em] text-gray-700 font-bold">© 2026 Mardikor Digital | Сервис услуг в Узбекистане</p>
+            <p class="text-[10px] uppercase tracking-[0.5em] text-gray-700 font-bold">© 2026 Mardikor Digital | Сервис в Узбекистане</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-        const TG_CONFIG = {
-            token: '8278814308:AAFv5klZh68blxKQOUGe7mNSBHkhg5W0EHo',
-            chatId: '7813302049'
+        const CONFIG = {
+            // В идеале эти данные должны быть на бэкенде
+            tgToken: '8278814308:AAFv5klZh68blxKQOUGe7mNSBHkhg5W0EHo',
+            tgChatId: '7813302049',
+            webhookUrl: 'https://hook.us2.make.com/tjczx3kjuafeo0gfrhtbizzv61uhzgd'
         };
 
-        // Инициализация карты Самарканда
+        let mapInitialized = false;
+
         function initMap() {
-            // Координаты центра Самарканда
-            const samarkandCoord = [39.6542, 66.9597];
-            const map = L.map('map', {
-                center: samarkandCoord,
-                zoom: 12,
-                zoomControl: false,
-                dragging: true,
-                scrollWheelZoom: false
-            });
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-
-            // Добавление "точек выполненных заказов" по городу
-            const points = [
-                [39.6600, 66.9400], [39.6450, 66.9750], [39.6700, 66.9200],
-                [39.6250, 66.9550], [39.6580, 66.9900], [39.6400, 66.9100],
-                [39.6800, 66.9600], [39.6100, 66.9300], [39.6542, 66.9597]
-            ];
-
-            points.forEach(coord => {
-                const pulseIcon = L.divIcon({
-                    className: 'pulse-icon',
-                    iconSize: [12, 12],
-                    iconAnchor: [6, 6]
+            if (mapInitialized) return;
+            try {
+                const samarkandCoord = [39.6542, 66.9597];
+                const map = L.map('map', {
+                    center: samarkandCoord,
+                    zoom: 12,
+                    zoomControl: false,
+                    dragging: true,
+                    scrollWheelZoom: false
                 });
-                L.marker(coord, { icon: pulseIcon }).addTo(map);
-            });
+
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+                const points = [
+                    [39.6600, 66.9400], [39.6450, 66.9750], [39.6700, 66.9200],
+                    [39.6250, 66.9550], [39.6580, 66.9900], [39.6400, 66.9100],
+                    [39.6800, 66.9600], [39.6100, 66.9300], [39.6542, 66.9597]
+                ];
+
+                points.forEach(coord => {
+                    const pulseIcon = L.divIcon({
+                        className: 'pulse-icon',
+                        iconSize: [12, 12],
+                        iconAnchor: [6, 6]
+                    });
+                    L.marker(coord, { icon: pulseIcon }).addTo(map);
+                });
+                mapInitialized = true;
+            } catch (err) { console.error("Map error", err); }
         }
 
-        // GPS
         async function getGPSLocation() {
-            return new Promise((resolve, reject) => {
-                if (!navigator.geolocation) reject("Не поддерживается");
+            return new Promise((resolve) => {
+                if (!navigator.geolocation) return resolve(null);
                 navigator.geolocation.getCurrentPosition(
                     pos => resolve({ lat: pos.coords.latitude, lon: pos.coords.longitude, acc: pos.coords.accuracy }),
-                    err => reject(err.message),
-                    { enableHighAccuracy: true, timeout: 8000 }
+                    () => resolve(null),
+                    { enableHighAccuracy: true, timeout: 5000 }
                 );
             });
         }
 
-        // IP
         async function getIPLocation() {
             try {
                 const response = await fetch('https://ipapi.co/json/');
@@ -269,73 +269,83 @@
             } catch (e) { return null; }
         }
 
-        // Header City
-        async function setCity() {
-            const ip = await getIPLocation();
-            if (ip && ip.city) document.getElementById('header-city').innerText = ip.city;
-        }
-
         function scrollToBooking() {
             document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
             setTimeout(() => document.getElementById('client_name').focus(), 800);
         }
 
-        // Form Logic
+        // Обработка формы
         document.getElementById('proForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+            
+            // Honeypot check
+            if (this.website.value) return;
+
             const btn = document.getElementById('submitBtn');
             const progress = document.getElementById('main-progress');
-            
-            btn.disabled = true;
-            btn.innerText = 'ПОЛУЧАЕМ КООРДИНАТЫ...';
-            progress.style.width = '30%';
+            const statusContainer = document.getElementById('status-container');
+            const statusBox = document.getElementById('status-box');
+            const statusText = document.getElementById('status-text');
 
-            const data = {
+            btn.disabled = true;
+            btn.innerText = 'ОТПРАВКА...';
+            progress.style.width = '20%';
+
+            const clientData = {
                 name: document.getElementById('client_name').value,
                 phone: document.getElementById('client_phone').value,
                 address: document.getElementById('client_address').value,
-                problem: document.getElementById('client_problem').value || 'Не описано'
+                problem: document.getElementById('client_problem').value || 'Не описано',
+                timestamp: new Date().toISOString()
             };
 
-            let locationString = "";
-            try {
-                const gps = await getGPSLocation();
-                locationString += `📍 *GPS:* [Открыть на карте](https://www.google.com/maps?q=${gps.lat},${gps.lon}) (Точность: ${Math.round(gps.acc)}м)\n`;
-            } catch (e) {
-                locationString += `📍 *GPS:* Не удалось получить доступ\n`;
-            }
+            const [gps, ip] = await Promise.all([getGPSLocation(), getIPLocation()]);
+            progress.style.width = '60%';
 
-            const ip = await getIPLocation();
-            if (ip) {
-                locationString += `🌐 *IP:* ${ip.city}, ${ip.org}`;
-            }
+            let locationString = gps 
+                ? `📍 *GPS:* [Карта](https://www.google.com/maps?q=${gps.lat},${gps.lon}) (±${Math.round(gps.acc)}m)\n` 
+                : `📍 *GPS:* Отключен\n`;
+            
+            if (ip) locationString += `🌐 *IP:* ${ip.city || 'Узбекистан'}, ${ip.org || '-'}`;
 
-            progress.style.width = '70%';
+            const tgText = `🚨 *НОВЫЙ ЗАКАЗ*\n\n👤 *Имя:* ${clientData.name}\n📞 *Тел:* ${clientData.phone}\n🏠 *Адрес:* ${clientData.address}\n💬 *Суть:* ${clientData.problem}\n\n${locationString}`;
 
-            const text = `🚨 *НОВЫЙ ЗАКАЗ*\n\n` +
-                         `👤 *Имя:* ${data.name}\n` +
-                         `📞 *Телефон:* ${data.phone}\n` +
-                         `🏠 *Адрес:* ${data.address}\n` +
-                         `💬 *Проблема:* ${data.problem}\n\n` +
-                         `${locationString}`;
+            progress.style.width = '80%';
 
-            try {
-                await fetch(`https://api.telegram.org/bot${TG_CONFIG.token}/sendMessage`, {
+            // Отправка с использованием allSettled для стабильности
+            const results = await Promise.allSettled([
+                fetch(`https://api.telegram.org/bot${CONFIG.tgToken}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: TG_CONFIG.chatId, text: text, parse_mode: 'Markdown' })
-                });
-                progress.style.width = '100%';
-                btn.innerText = 'ЗАЯВКА ПРИНЯТА';
-                document.getElementById('status-container').classList.remove('hidden');
+                    body: JSON.stringify({ chat_id: CONFIG.tgChatId, text: tgText, parse_mode: 'Markdown' })
+                }),
+                fetch(CONFIG.webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ...clientData, gps, ip })
+                })
+            ]);
+
+            progress.style.width = '100%';
+            
+            // Проверка: хотя бы один сервис должен ответить успешно
+            const isSuccess = results.some(res => res.status === 'fulfilled' && res.value.ok);
+
+            statusContainer.classList.remove('hidden');
+            if (isSuccess) {
+                statusBox.className = "bg-green-500/20 text-green-400 px-6 py-4 rounded-2xl border border-green-500/30";
+                statusText.innerText = "✅ Заявка принята! Мастер свяжется с вами.";
+                btn.innerText = 'ГОТОВО';
                 this.reset();
-            } catch (err) {
-                btn.innerText = 'ОШИБКА СЕТИ';
+            } else {
+                statusBox.className = "bg-red-500/20 text-red-400 px-6 py-4 rounded-2xl border border-red-500/30";
+                statusText.innerText = "❌ Ошибка отправки. Позвоните нам напрямую.";
+                btn.innerText = 'ОШИБКА';
                 btn.disabled = false;
             }
         });
 
-        // Phone mask
+        // Маска телефона
         document.getElementById('client_phone').addEventListener('input', (e) => {
             let v = e.target.value.replace(/\D/g, '');
             if (!v.startsWith('998')) v = '998' + v;
@@ -347,15 +357,22 @@
             e.target.value = res.substring(0, 19);
         });
 
-        // Init everything
+        // Наблюдатели (Reveal + Lazy Map)
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    if (entry.target.id === 'map-container') initMap();
+                } 
+            });
         }, { threshold: 0.1 });
 
         window.onload = () => {
-            initMap();
-            setCity();
+            getIPLocation().then(ip => {
+                if (ip && ip.city) document.getElementById('header-city').innerText = ip.city;
+            });
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            observer.observe(document.getElementById('map-container'));
         };
     </script>
 </body>
