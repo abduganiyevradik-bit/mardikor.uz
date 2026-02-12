@@ -3,355 +3,334 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Mardikor Pro — Профессиональный сервис мастеров в Самарканде</title>
     
+    <!-- SEO & Meta -->
+    <title id="meta-title">Mardikor Pro — Мастер в Самарканде за 60 минут или бесплатно</title>
+    <meta name="description" content="Профессиональные услуги: электрика, сантехника, ремонт в Самарканде. Официальная гарантия и выезд за 1 час.">
+    
+    <!-- JSON-LD LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Mardikor Pro",
+      "image": "https://images.unsplash.com/photo-1581094794329-c8112a89af12",
+      "@id": "",
+      "url": "https://mardikor.pro",
+      "telephone": "+998953379990",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Мирзо Улугбека, 42",
+        "addressLocality": "Самарканд",
+        "postalCode": "140100",
+        "addressCountry": "UZ"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 39.6542,
+        "longitude": 66.9597
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      }
+    }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;400;600;700;800&family=Outfit:wght@100;400;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Outfit:wght@400;900&display=swap" rel="stylesheet">
 
     <style>
-        :root {
-            --orange: #ff6b00;
-            --deep-black: #050505;
-        }
-
-        body {
-            background-color: var(--deep-black);
-            color: #fff;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            overflow-x: hidden;
-        }
-
+        :root { --orange: #ff6b00; --deep-black: #050505; }
+        body { background-color: var(--deep-black); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
         .outfit { font-family: 'Outfit', sans-serif; }
 
-        .glass {
-            background: rgba(255, 255, 255, .03);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, .08);
+        /* Shimmer Effect for Images */
+        .shimmer {
+            background: #111;
+            background-image: linear-gradient(to right, #111 0%, #222 20%, #111 40%, #111 100%);
+            background-repeat: no-repeat;
+            background-size: 800px 100%;
+            display: inline-block;
+            position: relative;
+            animation: shimmer 1.5s linear infinite forwards;
         }
+        @keyframes shimmer {
+            0% { background-position: -468px 0; }
+            100% { background-position: 468px 0; }
+        }
+        .img-loaded .shimmer { display: none; }
 
-        .text-gradient {
-            background: linear-gradient(135deg, #fff 40%, var(--orange) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Sticky Bottom Banner */
+        #sticky-urgency {
+            transform: translateY(150%);
+            transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
+        #sticky-urgency.visible { transform: translateY(0); }
 
-        /* Анимации */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .glass { background: rgba(255, 255, 255, .03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, .08); }
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-        .pulse-orange {
-            animation: pulse 2s infinite;
+        /* Shake animation for errors */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
         }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(255, 107, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(255, 107, 0, 0); }
-        }
-
-        .brand-logo {
-            filter: grayscale(1) brightness(2);
-            opacity: 0.4;
-            transition: 0.3s;
-        }
-        .brand-logo:hover {
-            filter: grayscale(0) brightness(1);
-            opacity: 1;
-        }
-
-        .step-line::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, var(--orange), transparent);
-            z-index: -1;
-        }
-
-        details > summary { list-style: none; }
-        details > summary::-webkit-details-marker { display: none; }
+        .error-shake { animation: shake 0.3s ease-in-out; border-color: #ef4444 !important; }
     </style>
 </head>
 <body>
 
-    <!-- Шапка -->
-    <nav class="fixed top-0 left-0 w-full z-[100] px-4 pt-4">
-        <div class="max-w-6xl mx-auto glass flex justify-between items-center p-4 rounded-3xl border-white/10 shadow-2xl">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-orange-600 rounded-2xl flex items-center justify-center font-black text-white text-xl shadow-lg shadow-orange-600/20">M</div>
-                <div class="hidden sm:block leading-tight">
-                    <div class="outfit font-black text-lg tracking-tighter uppercase">MARDIKOR PRO</div>
-                    <div class="text-[8px] uppercase tracking-[0.3em] text-orange-500 font-bold">Official Service</div>
-                </div>
+    <!-- Навигация -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-[100] px-4 pt-4">
+        <div class="max-w-6xl mx-auto glass flex justify-between items-center p-4 rounded-3xl">
+            <a href="/" class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-orange-600 rounded-2xl flex items-center justify-center font-black">M</div>
+                <div class="outfit font-black text-lg tracking-tighter">MARDIKOR PRO</div>
+            </a>
+            <div class="hidden md:flex gap-4">
+                <a href="#/electrik-samarkand" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-orange-500 transition-colors">Электрик</a>
+                <a href="#/santexnik-samarkand" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-orange-500 transition-colors">Сантехник</a>
+                <a href="#/master-na-dom" class="text-[10px] font-bold uppercase tracking-widest text-gray-400 hover:text-orange-500 transition-colors">Муж на час</a>
             </div>
-            <div class="flex items-center gap-6">
-                <div class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                    <a href="#about" class="hover:text-orange-500 transition-colors">О нас</a>
-                    <a href="#how" class="hover:text-orange-500 transition-colors">Процесс</a>
-                    <a href="#faq" class="hover:text-orange-500 transition-colors">Вопросы</a>
-                </div>
-                <a href="tel:+998953379990" class="pulse-orange bg-orange-600 px-6 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-transform">Вызвать мастера</a>
-            </div>
+            <a href="tel:+998953379990" class="bg-orange-600 px-6 py-3 rounded-2xl text-[10px] font-black uppercase text-white">Вызвать</a>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="relative pt-44 pb-20 px-6 overflow-hidden">
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-[10px] font-bold uppercase tracking-widest mb-8 text-orange-500 reveal">
-                <span class="relative flex h-2 w-2">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-                </span>
-                Работаем прямо сейчас 24/7
+    <!-- Main Hero Section -->
+    <section class="relative pt-44 pb-20 px-6 min-h-screen flex flex-col justify-center text-center">
+        <div class="max-w-5xl mx-auto">
+            <div id="page-tag" class="inline-block px-4 py-2 rounded-full bg-orange-600/10 border border-orange-600/20 text-[10px] font-bold uppercase text-orange-500 mb-8 reveal">
+                Самарканд • Официальный сервис
             </div>
-            <h1 class="text-5xl md:text-8xl font-black outfit tracking-tighter mb-8 leading-[0.9] reveal">
-                МАСТЕР С <br> <span class="text-gradient">ГАРАНТИЕЙ</span> В САМАРКАНДЕ
+            <h1 id="main-title" class="text-5xl md:text-8xl font-black outfit tracking-tighter mb-8 leading-[0.9] reveal">
+                МАСТЕР С ГАРАНТИЕЙ <br> <span class="text-orange-500">ЗА 60 МИНУТ</span>
             </h1>
-            <p class="text-gray-400 text-lg md:text-xl font-light mb-12 max-w-2xl mx-auto reveal" style="transition-delay: 0.1s">
-                Официальный договор, фиксированные цены и выезд в любую точку города за 60 минут. Чистота и порядок после работы гарантированы.
+            <p id="main-desc" class="text-gray-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto reveal">
+                Профессиональные услуги ремонта в Самарканде. Скидка 10% на первый вызов через сайт.
             </p>
-            <div class="flex flex-col sm:flex-row gap-5 justify-center reveal" style="transition-delay: 0.2s">
-                <a href="#booking" class="bg-orange-600 px-12 py-6 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-orange-700 transition-all shadow-xl shadow-orange-600/20">
-                    Заказать услугу
-                </a>
-                <a href="https://wa.me/998953379990" class="bg-green-600/10 border border-green-600/20 px-12 py-6 rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-green-600/20 transition-all flex items-center justify-center gap-3">
-                    <svg class="w-5 h-5 fill-green-500" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                    WhatsApp
-                </a>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center reveal">
+                <button onclick="focusPhone()" class="bg-orange-600 px-12 py-6 rounded-2xl font-black text-sm uppercase text-white shadow-xl shadow-orange-600/20">Вызвать мастера</button>
             </div>
         </div>
     </section>
 
-    <!-- Бренды -->
-    <section class="py-12 border-y border-white/5">
-        <div class="max-w-6xl mx-auto px-6 overflow-hidden">
-            <p class="text-[10px] text-center uppercase tracking-[0.5em] text-gray-600 mb-8 font-bold">Работаем с оборудованием мировых брендов</p>
-            <div class="flex flex-wrap justify-center gap-12 md:gap-20 opacity-50">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Bosch-logo.svg" class="h-6 brand-logo" alt="Bosch">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" class="h-6 brand-logo" alt="Samsung">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/LG_logo_%282014%29.svg" class="h-6 brand-logo" alt="LG">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Siemens_AG_logo.svg" class="h-6 brand-logo" alt="Siemens">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Ariston_logo.svg" class="h-6 brand-logo" alt="Ariston">
-            </div>
-        </div>
-    </section>
-
-    <!-- Преимущества -->
-    <section id="about" class="max-w-6xl mx-auto px-6 py-24">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="glass p-8 rounded-[32px] border-white/5 reveal">
-                <div class="text-orange-500 mb-4 font-black outfit text-2xl">01.</div>
-                <h3 class="text-xl font-bold mb-3">Фиксированная цена</h3>
-                <p class="text-sm text-gray-400">Стоимость озвучивается до начала работ и не меняется в процессе. Никаких «непредвиденных» расходов.</p>
-            </div>
-            <div class="glass p-8 rounded-[32px] border-white/5 reveal" style="transition-delay: 0.1s">
-                <div class="text-orange-500 mb-4 font-black outfit text-2xl">02.</div>
-                <h3 class="text-xl font-bold mb-3">Гарантия до 6 мес.</h3>
-                <p class="text-sm text-gray-400">Мы несем полную юридическую ответственность за результат. Если что-то пойдет не так — исправим бесплатно.</p>
-            </div>
-            <div class="glass p-8 rounded-[32px] border-white/5 reveal" style="transition-delay: 0.2s">
-                <div class="text-orange-500 mb-4 font-black outfit text-2xl">03.</div>
-                <h3 class="text-xl font-bold mb-3">Чистота и Порядок</h3>
-                <p class="text-sm text-gray-400">Наши мастера всегда убирают за собой строительный мусор. Вам не придется делать генуборку после нас.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Как мы работаем -->
-    <section id="how" class="max-w-6xl mx-auto px-6 py-24">
-        <h2 class="text-3xl md:text-5xl font-black outfit text-center mb-20 uppercase tracking-tighter">КАК МЫ <span class="text-orange-500">РАБОТАЕМ</span></h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8">
-            <div class="relative text-center reveal">
-                <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 text-xl font-black outfit">1</div>
-                <p class="text-xs uppercase font-bold tracking-widest">Заявка</p>
-            </div>
-            <div class="relative text-center reveal" style="transition-delay: 0.1s">
-                <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 text-xl font-black outfit">2</div>
-                <p class="text-xs uppercase font-bold tracking-widest">Звонок</p>
-            </div>
-            <div class="relative text-center reveal" style="transition-delay: 0.2s">
-                <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 text-xl font-black outfit text-orange-500">3</div>
-                <p class="text-xs uppercase font-bold tracking-widest">Оценка цены</p>
-            </div>
-            <div class="relative text-center reveal" style="transition-delay: 0.3s">
-                <div class="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 text-xl font-black outfit">4</div>
-                <p class="text-xs uppercase font-bold tracking-widest">Выезд 60 мин</p>
-            </div>
-            <div class="relative text-center reveal" style="transition-delay: 0.4s">
-                <div class="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg shadow-orange-600/30 text-xl font-black outfit">5</div>
-                <p class="text-xs uppercase font-bold tracking-widest">Гарантия</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="max-w-3xl mx-auto px-6 py-24">
-        <h2 class="text-3xl font-black outfit text-center mb-16 uppercase tracking-tighter">ЧАСТЫЕ <span class="text-orange-500">ВОПРОСЫ</span></h2>
-        <div class="space-y-4">
-            <details class="group glass rounded-2xl overflow-hidden border-white/5">
-                <summary class="p-6 cursor-pointer flex justify-between items-center font-bold text-sm uppercase tracking-widest">
-                    Сколько стоит выезд мастера?
-                    <span class="group-open:rotate-180 transition-transform">↓</span>
-                </summary>
-                <div class="px-6 pb-6 text-gray-400 text-sm">
-                    Выезд мастера в пределах города Самарканд бесплатный при заказе любой услуги. При отказе от работ оплачивается только диагностика (30 000 сум).
+    <!-- Блок доверия с изображениями -->
+    <section class="max-w-6xl mx-auto px-6 py-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <h2 class="text-4xl font-black outfit mb-6 uppercase">Почему нас <span class="text-orange-500">не стоит бояться</span></h2>
+                <div class="space-y-6">
+                    <div class="flex gap-4 p-6 glass rounded-3xl border-white/5">
+                        <div class="text-orange-500 font-bold text-2xl">01</div>
+                        <div>
+                            <div class="font-bold uppercase text-sm mb-1">Оплата после работы</div>
+                            <div class="text-xs text-gray-500">Никаких предоплат. Вы платите только за результат, который приняли.</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 p-6 glass rounded-3xl border-white/5">
+                        <div class="text-orange-500 font-bold text-2xl">02</div>
+                        <div>
+                            <div class="font-bold uppercase text-sm mb-1">Официальная гарантия</div>
+                            <div class="text-xs text-gray-500">Выписываем гарантийный талон до 6 месяцев на все виды услуг.</div>
+                        </div>
+                    </div>
                 </div>
-            </details>
-            <details class="group glass rounded-2xl overflow-hidden border-white/5">
-                <summary class="p-6 cursor-pointer flex justify-between items-center font-bold text-sm uppercase tracking-widest">
-                    Даете ли вы официальный чек?
-                    <span class="group-open:rotate-180 transition-transform">↓</span>
-                </summary>
-                <div class="px-6 pb-6 text-gray-400 text-sm">
-                    Да, мы работаем официально. После завершения работ вы получаете акт выполненных работ и квитанцию, которые являются вашей гарантией.
-                </div>
-            </details>
-            <details class="group glass rounded-2xl overflow-hidden border-white/5">
-                <summary class="p-6 cursor-pointer flex justify-between items-center font-bold text-sm uppercase tracking-widest">
-                    Можно ли оплатить переводом (Click/Payme)?
-                    <span class="group-open:rotate-180 transition-transform">↓</span>
-                </summary>
-                <div class="px-6 pb-6 text-gray-400 text-sm">
-                    Конечно. Мы принимаем наличные, переводы через Click, Payme, а также оплату по терминалу для юридических лиц.
-                </div>
-            </details>
+            </div>
+            <div class="relative group reveal">
+                <div class="shimmer absolute inset-0 rounded-[40px] z-0"></div>
+                <img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&q=80&w=800" 
+                     onload="this.parentElement.classList.add('img-loaded')"
+                     class="relative z-10 rounded-[40px] border border-white/10 shadow-2xl transition-transform group-hover:scale-[1.02]" 
+                     alt="Мастер за работой">
+            </div>
         </div>
     </section>
 
-    <!-- Заказ -->
+    <!-- Форма заказа -->
     <section id="booking" class="max-w-4xl mx-auto px-6 py-24">
-        <div class="bg-white/[0.02] border border-white/10 p-8 md:p-16 rounded-[48px] relative overflow-hidden reveal">
-            <div class="absolute top-0 right-0 p-8 opacity-10">
-                <svg width="200" height="200" viewBox="0 0 24 24" fill="white"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57a1.02 1.02 0 00-1.02.24l-2.2 2.2a15.045 15.045 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.02A11.36 11.36 0 018.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1z"/></svg>
-            </div>
-            
+        <div class="glass p-8 md:p-16 rounded-[48px] relative overflow-hidden reveal">
             <div class="relative z-10">
-                <h2 class="text-4xl font-black outfit mb-10 leading-none">ОФОРМИТЬ <br><span class="text-orange-500">ВЫЗОВ</span></h2>
+                <h2 class="text-4xl font-black outfit mb-8 uppercase text-center">ОФОРМИТЬ <span class="text-orange-500">ВЫЗОВ</span></h2>
                 
-                <form id="proForm" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="space-y-4">
-                        <input type="text" placeholder="Ваше имя" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition-colors">
-                        <input type="tel" placeholder="+998" required class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition-colors">
-                        <select class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition-colors text-gray-400">
-                            <option value="urgent">Срочный выезд (60 мин)</option>
-                            <option value="today">Сегодня</option>
-                            <option value="planned">В удобное время</option>
-                        </select>
+                <form id="proForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="relative">
+                            <input type="text" id="client_name" placeholder="Ваше имя" required 
+                                   class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 text-white transition-all">
+                        </div>
+                        <div class="relative">
+                            <input type="tel" id="client_phone" placeholder="+998" required 
+                                   class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 text-white font-bold transition-all">
+                        </div>
                     </div>
-                    <div class="space-y-4">
-                        <textarea placeholder="Опишите проблему (например: течет кран, искрит розетка)" rows="4" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 transition-colors resize-none"></textarea>
-                        <label class="flex items-center gap-3 cursor-pointer group">
-                            <input type="checkbox" required class="w-5 h-5 accent-orange-500">
-                            <span class="text-[10px] text-gray-500 uppercase font-bold tracking-widest group-hover:text-gray-300 transition-colors">Согласен с обработкой данных и условиями гарантии</span>
-                        </label>
-                    </div>
-                    <div class="md:col-span-2">
-                        <button type="submit" class="w-full bg-orange-600 py-6 rounded-2xl font-black uppercase text-sm tracking-[0.2em] hover:bg-orange-700 transition-all active:scale-[0.98]">
-                            Отправить заявку
-                        </button>
-                    </div>
+                    <textarea id="client_problem" placeholder="Что нужно сделать?" class="w-full bg-white/5 border border-white/10 p-5 rounded-2xl outline-none focus:border-orange-500 text-white h-32"></textarea>
+                    
+                    <button type="submit" id="submitBtn" class="w-full bg-orange-600 py-6 rounded-2xl font-black uppercase text-sm text-white tracking-widest hover:scale-[1.01] active:scale-95 transition-all">
+                        Отправить заявку
+                    </button>
                 </form>
-                <div id="status" class="hidden mt-8 text-center p-6 bg-green-500/10 border border-green-500/20 text-green-500 rounded-3xl font-bold">
-                    ✅ Заявка отправлена! Мастер свяжется с вами в течение 5 минут.
+
+                <!-- Статус-сообщения -->
+                <div id="status-container" class="mt-8 text-center hidden">
+                    <div id="status-success" class="hidden inline-flex items-center gap-2 bg-green-500/20 text-green-400 px-6 py-3 rounded-full text-xs font-bold uppercase animate-bounce">
+                        Заявка успешно отправлена!
+                    </div>
+                    <div id="status-error" class="hidden inline-flex flex-col items-center gap-2 bg-red-500/20 text-red-400 px-6 py-3 rounded-2xl text-xs font-bold uppercase">
+                        <span>Ошибка API. Нажмите /start в боте!</span>
+                        <span id="error-detail" class="text-[10px] opacity-60 lowercase"></span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Футер -->
-    <footer class="bg-black pt-20 pb-10 border-t border-white/5">
-        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 mb-20">
-            <div>
-                <div class="flex items-center gap-3 mb-6">
-                    <div class="w-8 h-8 bg-orange-600 rounded-lg flex items-center justify-center font-black">M</div>
-                    <span class="outfit font-black text-xl">MARDIKOR PRO</span>
+    <!-- Липкий баннер -->
+    <div id="sticky-urgency" class="fixed bottom-0 left-0 w-full z-[1000] p-4 pointer-events-none">
+        <div class="max-w-2xl mx-auto bg-white text-black p-4 rounded-3xl flex items-center justify-between shadow-2xl pointer-events-auto">
+            <div class="flex items-center gap-3">
+                <div class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-orange-600"></span>
                 </div>
-                <p class="text-sm text-gray-500 mb-6">Профессиональные бытовые услуги в Самарканде. Мы объединяем лучших мастеров города под единым стандартом качества.</p>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:border-orange-500 transition-colors opacity-60">IG</a>
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:border-orange-500 transition-colors opacity-60">TG</a>
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:border-orange-500 transition-colors opacity-60">FB</a>
+                <div class="text-[10px] font-black uppercase leading-tight">
+                    Сегодня осталось <span class="text-orange-600">3 свободных</span> мастера
                 </div>
             </div>
-            <div>
-                <h4 class="font-black outfit uppercase tracking-widest text-sm mb-6">Контакты</h4>
-                <div class="space-y-4 text-sm text-gray-400">
-                    <p>📍 г. Самарканд, ул. Мирзо Улугбека, 42</p>
-                    <p>📞 +998 95 337 99 90</p>
-                    <p>📧 support@mardikorpro.uz</p>
-                    <p>⏰ Работаем: Круглосуточно 24/7</p>
-                </div>
-            </div>
-            <div>
-                <h4 class="font-black outfit uppercase tracking-widest text-sm mb-6">Юр. Информация</h4>
-                <div class="space-y-2 text-[10px] text-gray-600 font-bold uppercase tracking-widest leading-loose">
-                    <p>ЧП "MARDIKOR SERVICE PRO"</p>
-                    <p>ИНН: 309887122</p>
-                    <p>ОГРН: 10229837740</p>
-                    <p>Лицензия №4421/2024</p>
-                    <p class="mt-4 text-orange-500/50">© 2026 Все права защищены</p>
-                </div>
-            </div>
+            <button onclick="focusPhone()" class="bg-black text-white px-6 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-orange-600 transition-colors">Вызвать сейчас</button>
         </div>
-    </footer>
-
-    <!-- Пульсирующие кнопки связи -->
-    <div class="fixed bottom-8 right-8 flex flex-col gap-4 z-[1000]">
-        <a href="https://wa.me/998953379990" class="w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform pulse-orange">
-            <svg class="w-8 h-8 fill-white" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        </a>
     </div>
 
     <script>
-        // Анимация Scroll Reveal
+        // --- ОБНОВЛЕННАЯ КОНФИГУРАЦИЯ ---
+        const tgConfig = {
+            token: '8278814308:AAFv5klZh68blxKQOUGe7mNSBHkhg5W0EHo',
+            chatId: '7813302049' // Ваш актуальный ID
+        };
+
+        const contentMap = {
+            '/electrik-samarkand': {
+                title: 'Электрик в Самарканде • Выезд за 1 час',
+                h1: 'УСЛУГИ <span class="text-orange-500">ЭЛЕКТРИКА</span> В САМАРКАНДЕ',
+                desc: 'Ремонт проводки, установка люстр, розеток и щитов. Профессиональные электрики с допуском.'
+            },
+            '/santexnik-samarkand': {
+                title: 'Сантехник в Самарканде • Устранение течи',
+                h1: 'УСЛУГИ <span class="text-orange-500">САНТЕХНИКА</span> В САМАРКАНДЕ',
+                desc: 'Установка смесителей, чистка засоров, монтаж труб. Оплата только после проверки работы.'
+            },
+            '/master-na-dom': {
+                title: 'Муж на час Самарканд • Любой мелкий ремонт',
+                h1: 'МУЖ НА ЧАС <span class="text-orange-500">В САМАРКАНДЕ</span>',
+                desc: 'Сборка мебели, навеска карнизов, мелкий бытовой ремонт. Мастер приедет со своим инструментом.'
+            }
+        };
+
+        function updatePageContent() {
+            const hash = window.location.hash.replace('#', '');
+            const data = contentMap[hash];
+            if (data) {
+                document.getElementById('meta-title').innerText = data.title;
+                document.getElementById('main-title').innerHTML = data.h1;
+                document.getElementById('main-desc').innerText = data.desc;
+                document.getElementById('page-tag').innerText = 'Самарканд • ' + data.title.split('•')[0];
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+        window.addEventListener('hashchange', updatePageContent);
+        window.onload = updatePageContent;
+
+        window.addEventListener('scroll', () => {
+            const banner = document.getElementById('sticky-urgency');
+            if (window.scrollY > 800) banner.classList.add('visible');
+            else banner.classList.remove('visible');
+        });
+
+        const phoneInput = document.getElementById('client_phone');
+        phoneInput.addEventListener('focus', () => { if (!phoneInput.value) phoneInput.value = '+998 '; });
+        phoneInput.addEventListener('input', (e) => {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,2})(\d{0,3})(\d{0,2})(\d{0,2})/);
+            if (!x) return;
+            e.target.value = !x[2] ? '+' + x[1] : '+' + x[1] + ' (' + x[2] + ') ' + x[3] + (x[4] ? '-' + x[4] : '') + (x[5] ? '-' + x[5] : '');
+        });
+
+        function focusPhone() {
+            document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => phoneInput.focus(), 800);
+        }
+
+        document.getElementById('proForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const statusContainer = document.getElementById('status-container');
+            const successMsg = document.getElementById('status-success');
+            const errorMsg = document.getElementById('status-error');
+            const errorDetail = document.getElementById('error-detail');
+            
+            const name = document.getElementById('client_name').value;
+            const phone = document.getElementById('client_phone').value;
+            const problem = document.getElementById('client_problem').value;
+            const pageSource = window.location.hash || 'Главная страница';
+
+            btn.disabled = true;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<span class="animate-pulse">ОТПРАВКА...</span>';
+            
+            statusContainer.classList.add('hidden');
+            successMsg.classList.add('hidden');
+            errorMsg.classList.add('hidden');
+
+            const text = `🚀 *НОВАЯ ЗАЯВКА*\n\n` +
+                         `👤 *Имя:* ${name}\n` +
+                         `📞 *Телефон:* ${phone}\n` +
+                         `🛠 *Задача:* ${problem}\n` +
+                         `📍 *Источник:* ${pageSource}`;
+
+            try {
+                const response = await fetch(`https://api.telegram.org/bot${tgConfig.token}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: tgConfig.chatId,
+                        text: text,
+                        parse_mode: 'Markdown'
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.ok) {
+                    btn.innerHTML = '✅ ОТПРАВЛЕНО';
+                    btn.classList.replace('bg-orange-600', 'bg-green-600');
+                    statusContainer.classList.remove('hidden');
+                    successMsg.classList.remove('hidden');
+                    this.reset();
+                } else {
+                    throw new Error(result.description || 'API Error');
+                }
+            } catch (err) {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+                statusContainer.classList.remove('hidden');
+                errorMsg.classList.remove('hidden');
+                errorDetail.innerText = `Причина: ${err.message}`;
+                btn.classList.add('error-shake');
+                setTimeout(() => btn.classList.remove('error-shake'), 400);
+            }
+        });
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Обработка формы
-        document.getElementById('proForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const btn = this.querySelector('button');
-            const status = document.getElementById('status');
-            
-            btn.innerHTML = '<span class="animate-pulse">ОТПРАВЛЯЕМ...</span>';
-            btn.disabled = true;
-
-            // Имитация отправки (в реальности тут будет fetch к API)
-            setTimeout(() => {
-                this.style.display = 'none';
-                status.classList.remove('hidden');
-                
-                // Прокрутка к сообщению об успехе
-                status.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 1800);
-        });
-
-        // Плавная прокрутка для ссылок
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
     </script>
 </body>
 </html>
